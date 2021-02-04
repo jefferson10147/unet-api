@@ -10,9 +10,10 @@ class Development(Config):
     DEBUG = True
 
 
-class Production(config):
+class Production(Config):
     ENV = "prod"
+    DEBUG = False
 
 
-class Test(config):
+class Test(Config):
     pass
