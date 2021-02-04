@@ -8,3 +8,11 @@ class Config():
 class Development(Config):
     ENV = "dev"
     DEBUG = True
+
+
+class Production(config):
+    ENV = "prod"
+
+
+class Test(config):
+    pass

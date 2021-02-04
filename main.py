@@ -1,10 +1,10 @@
 from flask.helpers import get_debug_flag
 
 from app import created_app
-from app.settings import Development, Config
+from app.settings import Development, Production
 
 
-config = Development if get_debug_flag() else Config
+config = Development if get_debug_flag() else Production
 app = created_app(config)
 
 
