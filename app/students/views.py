@@ -1,5 +1,6 @@
 from flask import Blueprint
 
+
 students_blueprint = Blueprint(
     name="students",
     import_name=__name__,

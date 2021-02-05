@@ -12,4 +12,4 @@ app = created_app(config)
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World hey! im in debug mode'
+    return 'Hello, World hey! im in debug mode with db'
