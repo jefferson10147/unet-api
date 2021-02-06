@@ -50,6 +50,12 @@ def students_by_second_lastname(second_lastname):
     return Response(json_util.dumps(db_response), mimetype="application/json")
 
 
+@students_blueprint.route("/search/students/career/<string:career>")
+def students_by_career(career):
+    db_response = students_model.get_all_students_by_career(career)
+    return Response(json_util.dumps(db_response), mimetype="application/json")
+
+
 @students_blueprint.route("/search/student/id/<string:id>")
 def student_by_id(id):
     db_response = students_model.get_student_by_id(ObjectId(id))

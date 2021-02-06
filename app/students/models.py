@@ -29,3 +29,6 @@ class StudentsModel():
             {"$text": {"$search": expression}},
             {"accuracy": {"$meta": "textScore"}},
         ).sort([("accuracy", {"$meta": "textScore"})])
+
+    def get_all_students_by_career(self, career):
+        return mongo.db.students.find({"career_name": career}, {"_id": 0})
