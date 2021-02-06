@@ -24,11 +24,11 @@ class StudentsModel():
     def get_students_by_second_lastname(self, second_lastname):
         return mongo.db.students.find({"second_lastname": second_lastname.capitalize()}, {"_id": 0})
 
+    def get_students_by_career(self, career):
+        return mongo.db.students.find({"career_name": career}, {"_id": 0})
+
     def get_students_by_expression(self, expression):
         return mongo.db.students.find(
             {"$text": {"$search": expression}},
             {"accuracy": {"$meta": "textScore"}},
         ).sort([("accuracy", {"$meta": "textScore"})])
-
-    def get_all_students_by_career(self, career):
-        return mongo.db.students.find({"career_name": career}, {"_id": 0})

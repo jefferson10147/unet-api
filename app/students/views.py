@@ -52,7 +52,7 @@ def students_by_second_lastname(second_lastname):
 
 @students_blueprint.route("/search/students/career/<string:career>")
 def students_by_career(career):
-    db_response = students_model.get_all_students_by_career(career)
+    db_response = students_model.get_students_by_career(career)
     return Response(json_util.dumps(db_response), mimetype="application/json")
 
 
