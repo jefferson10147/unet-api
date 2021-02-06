@@ -6,3 +6,7 @@ class StudentsModel():
     def get_all_students(self):
         students = mongo.db.students.find({}, {"_id": 0})
         return students
+
+    def get_student_by_id(self, id):
+        student = mongo.db.students.find_one({"_id": id}, {"_id": 0})
+        return student

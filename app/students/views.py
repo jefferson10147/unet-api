@@ -1,4 +1,4 @@
-from bson import json_util
+from bson import json_util, ObjectId
 from flask import Blueprint, Response
 
 from .models import StudentsModel
@@ -13,7 +13,12 @@ students_model = StudentsModel()
 
 
 @students_blueprint.route('/')
-def student_hi():
+def all_students():
     db_response = students_model.get_all_students()
-    response = json_util.dumps(db_response)
-    return Response(response, mimetype="application/json")
+    return Response(json_util.dumps(db_response), mimetype="application/json")
+
+
+@students_blueprint.route("/id/<id>")
+def student_by_id(id):
+    db_response = students_model.get_student_by_id(ObjectId(id))
+    return Response(json_util.dumps(db_response), mimetype="application/json")
