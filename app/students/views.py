@@ -12,6 +12,12 @@ students_blueprint = Blueprint(
 students_model = StudentsModel()
 
 
+@students_blueprint.route("/search/<string:expression>")
+def search_by_expression(expression):
+    db_response = students_model.get_students_by_expression(expression)
+    return Response(json_util.dumps(db_response), mimetype="application/json")
+
+
 @students_blueprint.route("/search/students")
 def all_students():
     db_response = students_model.get_all_students()
