@@ -13,7 +13,7 @@ class StudentsModel():
         return mongo.db.students.find({"dni": dni}, {"_id": 0})
 
     def get_students_by_name(self, name):
-        return mongo.db.students.find({"name": name.capitalize()})
+        return mongo.db.students.find({"name": name.capitalize()}, {"_id": 0})
 
     def get_students_by_second_name(self, second_name):
         return mongo.db.students.find({"second_name": second_name.capitalize()}, {"_id": 0})

@@ -1,5 +1,5 @@
 from bson import json_util, ObjectId
-from flask import Blueprint, Response
+from flask import Blueprint, Response, jsonify, request
 
 from .models import StudentsModel
 
@@ -66,3 +66,14 @@ def student_by_id(id):
 def student_by_dni(dni):
     db_response = students_model.get_student_by_dni(''.join(['V', dni]))
     return Response(json_util.dumps(db_response), mimetype="application/json")
+
+
+@students_blueprint.app_errorhandler(404)
+def not_found(error=None):
+    message = {
+        "message": "This resource was not found",
+        "status": 404
+    }
+    response = jsonify(message)
+    response.status_code = 404
+    return response
