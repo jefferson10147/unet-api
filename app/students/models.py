@@ -10,7 +10,7 @@ class StudentsModel():
         return mongo.db.students.find_one({"_id": id}, {"_id": 0})
 
     def get_student_by_dni(self, dni):
-        return mongo.db.students.find({"dni": dni}, {"_id": 0})
+        return mongo.db.students.find_one_or_404({"dni": dni}, {"_id": 0})
 
     def get_students_by_name(self, name):
         return mongo.db.students.find({"name": name.capitalize()}, {"_id": 0})
@@ -29,6 +29,7 @@ class StudentsModel():
 
     def get_students_by_expression(self, expression):
         return mongo.db.students.find(
-            {"$text": {"$search": expression}},
-            {"accuracy": {"$meta": "textScore"}},
+            {"$text": {"$search": expression}}, 
+            {"accuracy": {"$meta": "textScore"}}
         ).sort([("accuracy", {"$meta": "textScore"})])
+        
