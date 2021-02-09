@@ -38,4 +38,12 @@ class StudentsModel():
 
     def insert_students(self, documents):
         result = mongo.db.students.insert_many(documents)
-        return [{"__id": str(id)} for id in result.inserted_ids]
+        return [{"__id": str(id)} for id in list(result.inserted_ids)]
+
+    def update_student_by_dni(self, document):
+        return mongo.db.students.update_one({"dni": document["dni"]}, {"$set": document}).modified_count
+
+    def delete_student_by_dni(self, dni):
+        result = self.get_student_by_dni(dni)
+        mongo.db.students.delete_one({"dni": dni})
+        return result

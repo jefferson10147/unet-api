@@ -82,6 +82,19 @@ def insert_students():
     return (jsonify(db_response), 201)
 
 
+@students_blueprint.route("/update", methods=["PUT"])
+def update_student():
+    document = request.get_json()
+    db_response = students_model.update_student_by_dni(document)
+    return (jsonify({"modified_count": str(db_response)}))
+
+
+@students_blueprint.route("/delete/<string:dni>", methods=["DELETE"])
+def delete_student(dni):
+    db_response = students_model.delete_student_by_dni(dni)
+    return Response(json_util.dumps(db_response), mimetype="application/json")
+
+
 @students_blueprint.app_errorhandler(404)
 def not_found(error=None):
     message = {
