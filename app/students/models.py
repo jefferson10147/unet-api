@@ -29,7 +29,13 @@ class StudentsModel():
 
     def get_students_by_expression(self, expression):
         return mongo.db.students.find(
-            {"$text": {"$search": expression}}, 
+            {"$text": {"$search": expression}},
             {"accuracy": {"$meta": "textScore"}}
         ).sort([("accuracy", {"$meta": "textScore"})])
-        
+
+    def insert_one_student(self, document):
+        return mongo.db.students.insert_one(document).inserted_id
+
+    def insert_students(self, documents):
+        result = mongo.db.students.insert_many(documents)
+        return [{"__id": str(id)} for id in result.inserted_ids]

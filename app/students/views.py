@@ -68,6 +68,20 @@ def student_by_dni(dni):
     return Response(json_util.dumps(db_response), mimetype="application/json")
 
 
+@students_blueprint.route("/insert", methods=["POST"])
+def insert_student():
+    document = request.get_json()
+    db_response = students_model.insert_one_student(document)
+    return (jsonify({"__id": str(db_response)}), 201)
+
+
+@students_blueprint.route("/insert_many", methods=["POST"])
+def insert_students():
+    documents = request.get_json()
+    db_response = students_model.insert_students(documents)
+    return (jsonify(db_response), 201)
+
+
 @students_blueprint.app_errorhandler(404)
 def not_found(error=None):
     message = {
