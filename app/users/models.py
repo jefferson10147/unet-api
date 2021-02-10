@@ -4,6 +4,9 @@ from app.extensions import mongo
 
 class UserModel():
 
+    def __init__(self, username):
+        self.username = username
+
     @classmethod
     def create_user(cls, data):
 
@@ -22,3 +25,9 @@ class UserModel():
         count = mongo.db.users.find({"username": username}).count()
         if count:
             return True
+
+    @classmethod
+    def get_user(cls, data):
+        user = mongo.db.users.find_one({"username": data["username"]})
+        if user and check_password_hash(user["password"], data["password"]):
+            return UserModel(user["username"])

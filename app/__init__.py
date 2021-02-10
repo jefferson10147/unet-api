@@ -2,14 +2,14 @@ from flask import Flask
 
 from app.students.views import students_blueprint
 from app.users.views import users_blueprint
-from app.extensions import mongo
+from app.extensions import mongo, jwt
 
 
 def created_app(config_settings):
     app = Flask(__name__)
     app.config.from_object(config_settings)
 
-    mongo.init_app(app)
+    register_extensions(app)
     register_blueprints(app)
 
     return app
@@ -18,3 +18,8 @@ def created_app(config_settings):
 def register_blueprints(app):
     app.register_blueprint(students_blueprint)
     app.register_blueprint(users_blueprint)
+
+
+def register_extensions(app):
+    mongo.init_app(app)
+    jwt.init_app(app)
