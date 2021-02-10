@@ -1,5 +1,6 @@
-from bson import json_util, ObjectId
 from flask import Blueprint, Response, jsonify, request
+from bson import json_util, ObjectId
+from flask_jwt_extended import jwt_required
 
 from .models import StudentsModel
 
@@ -69,6 +70,7 @@ def student_by_dni(dni):
 
 
 @students_blueprint.route("/insert", methods=["POST"])
+@jwt_required
 def insert_student():
     document = request.get_json()
     db_response = students_model.insert_one_student(document)
@@ -76,6 +78,7 @@ def insert_student():
 
 
 @students_blueprint.route("/insert_many", methods=["POST"])
+@jwt_required
 def insert_students():
     documents = request.get_json()
     db_response = students_model.insert_students(documents)
@@ -83,6 +86,7 @@ def insert_students():
 
 
 @students_blueprint.route("/update", methods=["PUT"])
+@jwt_required
 def update_student():
     document = request.get_json()
     db_response = students_model.update_student_by_dni(document)
@@ -90,6 +94,7 @@ def update_student():
 
 
 @students_blueprint.route("/delete/<string:dni>", methods=["DELETE"])
+@jwt_required
 def delete_student(dni):
     db_response = students_model.delete_student_by_dni(dni)
     return Response(json_util.dumps(db_response), mimetype="application/json")
