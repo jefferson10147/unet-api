@@ -1,6 +1,7 @@
 from flask import Flask
 
 from app.students.views import students_blueprint
+from app.users.views import users_blueprint
 from app.extensions import mongo
 
 
@@ -16,3 +17,4 @@ def created_app(config_settings):
 
 def register_blueprints(app):
     app.register_blueprint(students_blueprint)
+    app.register_blueprint(users_blueprint)
