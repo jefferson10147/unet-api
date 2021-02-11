@@ -1,3 +1,4 @@
+from flask import render_template
 from flask.helpers import get_debug_flag
 
 from app import created_app
@@ -12,4 +13,4 @@ app = created_app(config)
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World hey! im in debug mode with db'
+    return render_template("index.html")
