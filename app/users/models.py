@@ -1,5 +1,7 @@
 from werkzeug.security import generate_password_hash, check_password_hash
+
 from app.extensions import mongo
+from app.settings import auth_key
 
 
 class UserModel():
@@ -9,6 +11,8 @@ class UserModel():
 
     @classmethod
     def create_user(cls, data):
+        if data["auth_key"] != auth_key:
+            return {"Message": "Sorry, auth_key to create an user isn't valid."}
 
         if cls.check_if_user_exits(data["username"]):
             return {"Message": "Username already exists."}
