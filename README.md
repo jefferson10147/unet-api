@@ -3,7 +3,7 @@
 This is a REST API using python's microframework Flask, and NoSQL database MongoDB with Its mongo Atlas cloud manager. This API provides information of students at UNET, you can also make others CRUD operations like INSERT, PUT, or DELETE, but yow need to create an user and login to use JWT, to more information about this contact repo owner.
 
 ## To run this API on your local machine
-1- Clone this project, on your machine:
+1- Clone this project, on your local machine:
 ```bash
 $ git clone https://github.com/jefferson10147/unet-api.git
 ```
@@ -40,8 +40,8 @@ database_name=your_mongoDB_database
 ```bash
  $ flask run
 ```
-If you are using a local mongo database, you need to edit this variable at app.settings.py
+If you are using a local mongo database, you need to edit this variable at app.settings.py:
 ```python
 MONGO_URI = YOUR_MONGO_URI
 ```
-
+You can check all endpoints when you are running this API on your local machine: [DOCS](https://documenter.getpostman.com/view/8771822/TW77fNue)
