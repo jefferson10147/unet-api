@@ -5,7 +5,7 @@ from decouple import config
 username = config("username_from_db")
 password = config("password_from_db")
 database_name = config("database_name")
-auth_key = config("auth_key")
+admin_key = config("admin_key")
 
 
 class Config():

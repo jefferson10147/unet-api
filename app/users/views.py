@@ -19,7 +19,7 @@ def sign_in():
     if not json_args:
         return jsonify({"messagge": "Missing Json in body request"}), 400
 
-    if not("auth_key" in json_args.keys()):
+    if not("admin_key" in json_args.keys()):
         return jsonify({"messagge": "You need an auth_key to create an user."}), 400
 
     if not ("username" in json_args.keys()) or not ("password" in json_args.keys()) or not ("confirm_password" in json_args.keys()):
