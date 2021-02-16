@@ -51,6 +51,13 @@ def students_by_second_lastname(second_lastname):
     return Response(json_util.dumps(db_response), mimetype="application/json")
 
 
+@students_blueprint.route("/search/students/name/<string:name>/lastname/<string:lastname>")
+def students_by_name_and_lastname(name, lastname):
+    db_response = students_model.get_students_by_name_and_lastname(
+        name, lastname)
+    return Response(json_util.dumps(db_response), mimetype="application/json")
+
+
 @students_blueprint.route("/search/students/career/<string:career>")
 def students_by_career(career):
     db_response = students_model.get_students_by_career(career)
