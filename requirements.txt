@@ -3,3 +3,4 @@ python-decouple
 Flask-PyMongo
 pymongo[srv]
 flask-jwt-extended
+python-dotenv

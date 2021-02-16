@@ -1,17 +1,16 @@
 import datetime
-from decouple import config
+import os
 
-
-username = config("username_from_db")
-password = config("password_from_db")
-database_name = config("database_name")
-admin_key = config("admin_key")
+username = os.getenv("username_from_db")
+password = os.getenv("password_from_db")
+database_name = os.getenv("database_name")
+admin_key = os.getenv("admin_key")
 
 
 class Config():
-    SECRET_KEY = config("secret_key")
+    SECRET_KEY = os.getenv("secret_key")
     MONGO_URI = f"mongodb+srv://{username}:{password}@unet-db.rfzm9.mongodb.net/{database_name}?retryWrites=true&w=majority&ssl=true"
-    JWT_SECRET_KEY = config("jwt_secret_key")
+    JWT_SECRET_KEY = os.getenv("jwt_secret_key")
     JWT_ACCESS_TOKEN_EXPIRES = datetime.timedelta(seconds=60)
 
 
