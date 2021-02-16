@@ -29,7 +29,7 @@ $ echo "FLASK_APP=main.py" > .flaskenv
 ```
 Also you can export another variables to put aplication into development mode:
 ```bash
-$ echo "FLASK_ENV=development" > .flaskenv
+$ echo "FLASK_ENV=development" >> .flaskenv
 ```
 6- Create an .env file with these variables
 ```
