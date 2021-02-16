@@ -7,7 +7,7 @@ from app.settings import Production
 from app.views import main
 
 
-def created_app(config_settings=Production):
+def create_app(config_settings=Production):
     app = Flask(__name__)
     app.config.from_object(config_settings)
 
