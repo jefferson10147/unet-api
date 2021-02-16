@@ -18,9 +18,9 @@ def create_app(config_settings=Production):
 
 
 def register_blueprints(app):
-    app.register_blueprint(students_blueprint)
-    app.register_blueprint(users_blueprint)
     app.register_blueprint(main)
+    app.register_blueprint(users_blueprint)
+    app.register_blueprint(students_blueprint)
 
 
 def register_extensions(app):

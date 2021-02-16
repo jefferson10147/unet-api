@@ -22,13 +22,13 @@ $ source your_env/bin/activate
 ```bash
 $ pip install -r requirements.txt
 ```
-5- Export variables to run flask:
-```bash
-$ export FLASK_APP=main.py
+5- Export variables to .flaskenv file:
+```
+FLASK_APP=main.py
 ```
 Also you can export another variables to put aplication into development mode:
-```bash
-$ export FLASK_ENV=development
+```
+FLASK_ENV=development
 ```
 6- Create an .env file with these variables
 ```
