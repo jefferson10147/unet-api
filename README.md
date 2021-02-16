@@ -22,13 +22,14 @@ $ source your_env/bin/activate
 ```bash
 $ pip install -r requirements.txt
 ```
-5- Export variables to .flaskenv file:
-```
-FLASK_APP=main.py
+5- Create and export variables to .flaskenv file:
+```bash
+$ touch .flaskenv
+$ echo "FLASK_APP=main.py" > .flaskenv
 ```
 Also you can export another variables to put aplication into development mode:
-```
-FLASK_ENV=development
+```bash
+$ echo "FLASK_ENV=development" > .flaskenv
 ```
 6- Create an .env file with these variables
 ```
