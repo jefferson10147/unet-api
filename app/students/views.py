@@ -1,4 +1,4 @@
-from flask import Blueprint, Response, jsonify, request
+from flask import Blueprint, Response, jsonify, request, make_response
 from bson import json_util, ObjectId
 from flask_jwt_extended import jwt_required
 
@@ -28,19 +28,28 @@ def all_students():
 @students_blueprint.route("/search/students/name/<string:name>")
 def students_by_name(name):
     db_response = students_model.get_students_by_name(name)
-    return Response(json_util.dumps(db_response), mimetype="application/json")
+    if not db_response:
+        return not_found()
+
+    return Response(db_response, mimetype="application/json")
 
 
 @students_blueprint.route("/search/students/second_name/<string:second_name>")
 def students_by_second_name(second_name):
     db_response = students_model.get_students_by_second_name(second_name)
-    return Response(json_util.dumps(db_response), mimetype="application/json")
+    if not db_response:
+        return not_found()
+
+    return Response(db_response, mimetype="application/json")
 
 
 @students_blueprint.route("/search/students/lastname/<string:lastname>")
 def students_by_lastname(lastname):
     db_response = students_model.get_students_by_lastname(lastname)
-    return Response(json_util.dumps(db_response), mimetype="application/json")
+    if not db_response:
+        return not_found()
+
+    return Response(db_response, mimetype="application/json")
 
 
 @students_blueprint.route("/search/students/second_lastname/<string:second_lastname>")
@@ -48,20 +57,29 @@ def students_by_second_lastname(second_lastname):
     db_response = students_model.get_students_by_second_lastname(
         second_lastname
     )
-    return Response(json_util.dumps(db_response), mimetype="application/json")
+    if not db_response:
+        return not_found()
+
+    return Response(db_response, mimetype="application/json")
 
 
 @students_blueprint.route("/search/students/name/<string:name>/lastname/<string:lastname>")
 def students_by_name_and_lastname(name, lastname):
     db_response = students_model.get_students_by_name_and_lastname(
         name, lastname)
-    return Response(json_util.dumps(db_response), mimetype="application/json")
+    if not db_response:
+        return not_found()
+
+    return Response(db_response, mimetype="application/json")
 
 
 @students_blueprint.route("/search/students/career/<string:career>")
 def students_by_career(career):
     db_response = students_model.get_students_by_career(career)
-    return Response(json_util.dumps(db_response), mimetype="application/json")
+    if not db_response:
+        return not_found()
+
+    return Response(db_response, mimetype="application/json")
 
 
 @students_blueprint.route("/search/student/id/<string:id>")

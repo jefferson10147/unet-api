@@ -31,7 +31,7 @@ $ export FLASK_ENV=development
 ```
 secret_key=your_app_secret_key
 jwt_secret_key=your_jwt_secret_key
-auth_key=your_auth_key
+admin_key=your_admin_key
 username_from_db=your_mongoDB_username
 password_from_db=your_mongoDB_password
 database_name=your_mongoDB_database
