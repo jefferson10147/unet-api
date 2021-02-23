@@ -16,7 +16,7 @@ $ python3 -m venv your_venv
 ```
 3- Activate env:
 ```bash
-$ source your_env/bin/activate
+$ source your_venv/bin/activate
 ```
 4- Install dependencies:
 ```bash
