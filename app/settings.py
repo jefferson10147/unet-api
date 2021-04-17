@@ -7,7 +7,7 @@ database_name = os.getenv("database_name")
 admin_key = os.getenv("admin_key")
 
 
-class Config():
+class Config:
     SECRET_KEY = os.getenv("secret_key")
     MONGO_URI = f"mongodb+srv://{username}:{password}@unet-db.rfzm9.mongodb.net/{database_name}?retryWrites=true&w=majority&ssl=true"
     JWT_SECRET_KEY = os.getenv("jwt_secret_key")
